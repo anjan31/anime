@@ -10,9 +10,6 @@ function renderData(result)
     resDiv.className = "card";
     resDiv.innerHTML = `
 
-    
-    
-    
     <img src="${result.image_url}"    />
     <h2 style ="text-align:center"> Title:  <strong>${result.title}</strong></h2>
     <h5 style ="text-align:center">Start date: ${result.start_date}</h5>
@@ -23,6 +20,10 @@ function renderData(result)
      
     <br>
     <br>
+    
+    
+    
+    
     
    
     `;
@@ -49,10 +50,23 @@ function renderAll(res,inp) {
         var inputVal = document.getElementById("myInput").value;
         console.log(inputVal);
         e.preventDefault();
-        fetch('https://api.jikan.moe/v3/search/anime?q='+inputVal)
-        .then(response => {return response.json()})
-        .then(data => renderAll(data.results,inputVal))
-        .catch(e => console.log(e.message));
+     
+        (async () => {
+            try{
+                let response = await fetch('https://api.jikan.moe/v3/search/anime?q='+inputVal);
+                let user = await response.json();
+                renderAll(user.results,inputVal);
+                
+
+            }
+
+            
+           catch (e){
+               console.log(e);
+
+           }
+            
+          })();
         
     });
         
@@ -63,7 +77,7 @@ function renderAll(res,inp) {
         
         
        
-
+  
 
   
       
