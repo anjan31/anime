@@ -1,0 +1,16 @@
+#series {
+  margin: 3rem;
+}
+
+
+.container
+{
+  justify-content: center;
+  margin-left: 500px;
+}
+  
+.card
+{
+  border-style: solid;
+  border-color: red;
+}
